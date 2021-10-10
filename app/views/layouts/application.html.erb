@@ -19,30 +19,30 @@
         <ul class="navbar-nav ml-auto">
             <% if costomer_signed_in? %>
 
-             <li><%= link_to user_path(current_user.id), class: "btn btn-link text-light" do %>
+             <li><%= link_to user_path(current_user.id), class: "btn btn-link text-dark" do %>
              </i>マイページ<% end %></li>
 
-             <li><%= link_to users_path, class: "btn btn-link text-light" do %>
+             <li><%= link_to users_path, class: "btn btn-link text-dark" do %>
              </i>商品一覧<% end %></li>
 
-             <li><%= link_to books_path, class: "btn btn-link text-light" do %>
+             <li><%= link_to books_path, class: "btn btn-link text-dark" do %>
              </i>カート<% end %></li>
 
-             <li><%= link_to destroy_user_session_path, method: :delete, class: "btn btn-link text-light" do %>
+             <li><%= link_to destroy_user_session_path, method: :delete, class: "btn btn-link text-dark" do %>
              </i>ログアウト<% end %></li>
 
             <% else %>
 
-             <li><%= link_to root_path, class: "btn btn-link text-light" do %>
+             <li><%= link_to home_about_path, class: "btn btn-link text-dark" do %>
              </i>About<% end %></li>
 
-             <li><%= link_to root_path, class: "btn btn-link text-light" do %>
-             <i class="fas fa-link"></i>商品一覧<% end %></li>
+             <li><%= link_to root_path, class: "btn btn-link text-dark" do %>
+             </i>商品一覧<% end %></li>
 
-             <li><%= link_to new_costomer_registration_path, class: "btn btn-link text-light" do %>
+             <li><%= link_to new_customer_registration_path, class: "btn btn-link text-dark" do %>
              </i>新規登録<% end %></li>
 
-             <li><%= link_to new_costomer_session_path, class: "btn btn-link text-light" do %>
+             <li><%= link_to new_customer_session_path, class: "btn btn-link text-dark" do %>
              </i>ログイン<% end %></li>
             <% end %>
           </ul>
