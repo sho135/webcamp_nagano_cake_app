@@ -1,1 +1,13 @@
-<h1>商品編集</h1>
+<div class="container">
+  <h1>商品編集</h1>
+  <%= form_with model: @item, local:true do |f| %>
+  <% end %>
+
+  <h3>商品画像　<%= f.attachment_field :image %></h3>
+  <h3>商品名　<%= f.text_field :item_name %></h3>
+  <h3>商品説明 <%= f.text_area :introduction %></h3>
+  <h3>ジャンル</h3>
+  <h3>税抜価格 <%= f.number_field :price %>円</h3>
+  <h3>販売ステータス</h3>
+  <%= f.submit '変更を保存', class: "btn btn-success" %>
+</div>
