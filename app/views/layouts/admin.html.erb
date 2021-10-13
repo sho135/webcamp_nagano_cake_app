@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake:管理者画面</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <span>ながのCAKE</span>
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+
+             <li><%= link_to admin_items_index_path, class: "btn btn-link text-dark" do %>
+             </i>商品一覧<% end %></li>
+
+             <li><%= link_to admin_customers_index_path, class: "btn btn-link text-dark" do %>
+             </i>会員一覧<% end %></li>
+
+             <li><%= link_to admin_homes__path, class: "btn btn-link text-dark" do %>
+             </i>注文履歴一覧<% end %></li>
+             
+             <li><%= link_to admin_genres_index_path, class: "btn btn-link text-dark" do %>
+             </i>ジャンル一覧<% end %></li>
+
+             <li><%= link_to destroy_user_session_path, method: :delete, class: "btn btn-link text-dark" do %>
+             </i>ログアウト<% end %></li>
+
+            <% else %>
+
+             <li><%= link_to home_about_path, class: "btn btn-link text-dark" do %>
+             </i>About<% end %></li>
+
+             <li><%= link_to root_path, class: "btn btn-link text-dark" do %>
+             </i>商品一覧<% end %></li>
+
+             <li><%= link_to new_admin_registration_path, class: "btn btn-link text-dark" do %>
+             </i>新規登録<% end %></li>
+
+             <li><%= link_to new_admin_session_path, class: "btn btn-link text-dark" do %>
+             </i>ログイン<% end %></li>
+            <% end %>
+          </ul>
+
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
