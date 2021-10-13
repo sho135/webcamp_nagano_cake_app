@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'orders/update'
   end
   namespace :admin do
+    resources :customers
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'
@@ -29,15 +30,22 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
-  namespace :admin do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  devise_for :customers
-  devise_for :admins
+
+
+
 
   root to: 'homes#top'
   get "/home/about" => "homes#about"
+
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
+  }
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
 
 end
