@@ -17,8 +17,25 @@
         </a>
 
         <ul class="navbar-nav ml-auto">
-            <% if customer_signed_in? %>
 
+          <% if admin_signed_in? %>
+             <li><%= link_to admin_items_index_path, class: "btn btn-link text-dark" do %>
+             </i>商品一覧<% end %></li>
+
+             <li><%= link_to admin_customers_index_path, class: "btn btn-link text-dark" do %>
+             </i>会員一覧<% end %></li>
+
+             <li><%= link_to admin_homes_top_path, class: "btn btn-link text-dark" do %>
+             </i>注文履歴一覧<% end %></li>
+
+             <li><%= link_to admin_genres_index_path, class: "btn btn-link text-dark" do %>
+             </i>ジャンル一覧<% end %></li>
+
+             <li><%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-link text-dark" do %>
+             </i>ログアウト<% end %></li>
+          <% else %>
+
+          <% if customer_signed_in? %>
              <li><%= link_to root_path, class: "btn btn-link text-dark" do %>
              </i>マイページ<% end %></li>
 
@@ -31,8 +48,8 @@
              <li><%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-link text-dark" do %>
              </i>ログアウト<% end %></li>
 
-            <% else %>
 
+          <% else %>
              <li><%= link_to home_about_path, class: "btn btn-link text-dark" do %>
              </i>About<% end %></li>
 
@@ -44,9 +61,10 @@
 
              <li><%= link_to new_customer_session_path, class: "btn btn-link text-dark" do %>
              </i>ログイン<% end %></li>
-            <% end %>
-          </ul>
+          <% end %>
+          <% end %>
 
+          </ul>
       </div>
     </header>
     <%= yield %>
