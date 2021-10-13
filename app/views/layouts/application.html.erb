@@ -19,16 +19,16 @@
         <ul class="navbar-nav ml-auto">
 
           <% if admin_signed_in? %>
-             <li><%= link_to admin_items_index_path, class: "btn btn-link text-dark" do %>
+             <li><%= link_to admins_items_path, class: "btn btn-link text-dark" do %>
              </i>商品一覧<% end %></li>
 
-             <li><%= link_to admin_customers_index_path, class: "btn btn-link text-dark" do %>
+             <li><%= link_to admins_customers_path, class: "btn btn-link text-dark" do %>
              </i>会員一覧<% end %></li>
 
-             <li><%= link_to admin_homes_top_path, class: "btn btn-link text-dark" do %>
+             <li><%= link_to admins_homes_top_path, class: "btn btn-link text-dark" do %>
              </i>注文履歴一覧<% end %></li>
 
-             <li><%= link_to admin_genres_index_path, class: "btn btn-link text-dark" do %>
+             <li><%= link_to admins_genres_path, class: "btn btn-link text-dark" do %>
              </i>ジャンル一覧<% end %></li>
 
              <li><%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-link text-dark" do %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  namespace :admin do
+  
+  namespace :admins do
     resources :orders_details, only: [:update]
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
