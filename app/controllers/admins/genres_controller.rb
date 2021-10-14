@@ -27,4 +27,11 @@ class Admins::GenresController < ApplicationController
   end
   end
 
+private
+
+ def genre_params
+   params.require(:genre).permit(:genre_name)
+ end
+
+
 end
