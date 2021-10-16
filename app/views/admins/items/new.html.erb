@@ -1,13 +1,13 @@
 <div class="container">
   <h1>商品新規登録</h1>
-  <%= form_with model: @item, local:true do |f| %>
-  <% end %>
-  
-  <h3>商品画像　<%= f.attachment_field :image %></h3>
+  <%= form_with model: @item, url: new_admins_item_path, local:true do |f| %>
+
+  <h3>商品画像　<%= f.attachment_field :image_id %></h3>
   <h3>商品名　<%= f.text_field :item_name %></h3>
   <h3>商品説明 <%= f.text_area :introduction %></h3>
   <h3>ジャンル</h3>
   <h3>税抜価格 <%= f.number_field :price %>円</h3>
   <h3>販売ステータス</h3>
   <%= f.submit '新規登録', class: "btn btn-success" %>
+  <% end %>
 </div>
