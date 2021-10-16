@@ -1,13 +1,18 @@
 <div class="container">
   <h1>商品新規登録</h1>
-  <%= form_with model: @item, url: new_admins_item_path, local:true do |f| %>
+  <%= form_with model: @item, url: admins_items_path, local:true do |f| %>
 
   <h3>商品画像　<%= f.attachment_field :image_id %></h3>
   <h3>商品名　<%= f.text_field :item_name %></h3>
   <h3>商品説明 <%= f.text_area :introduction %></h3>
-  <h3>ジャンル</h3>
+  <h3>ジャンル <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name) %></h3>
   <h3>税抜価格 <%= f.number_field :price %>円</h3>
-  <h3>販売ステータス</h3>
+  <h3>販売ステータス
+  <%= f.radio_button :is_active, :on_sale, checked: true %>
+  <%= f.label :is_active, "販売中", {value: "0", style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, :off_sale %>
+  <%= f.label :is_active, "販売停止中", {value: "1", style: "display: inline-block;"} %>
+  </h3>
   <%= f.submit '新規登録', class: "btn btn-success" %>
   <% end %>
 </div>
