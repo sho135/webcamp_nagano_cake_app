@@ -1,12 +1,12 @@
 <div class="container">
   <h1>商品編集</h1>
-  <%= form_with model: @item, local:true do |f| %>
+  <%= form_with model: @item, url:admins_item_path, local:true do |f| %>
 
 
-  <h3>商品画像　<%= f.attachment_field :image_id %></h3>
+  <h3>商品画像　<%= f.attachment_field :image %></h3>
   <h3>商品名　<%= f.text_field :item_name %></h3>
   <h3>商品説明 <%= f.text_area :introduction %></h3>
-  <h3>ジャンル<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name) %></h3>
+  <h3>ジャンル<%= f.select :genre_name, options_from_collection_for_select(Genre.all, :id, :genre_name) %></h3>
   <h3>税抜価格 <%= f.number_field :price %>円</h3>
   <h3>販売ステータス
   <%= f.radio_button :is_active, :on_sale, checked: true %>
