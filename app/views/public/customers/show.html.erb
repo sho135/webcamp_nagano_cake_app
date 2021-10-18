@@ -1,0 +1,47 @@
+<h1>マイページ</h1>
+
+<h4>登録情報</h4> <%= link_to "編集する", edit_ , class: "btn btn-success" %>
+
+<div class="row">
+  <div class="col-10">
+
+    <table class="table table-striped table-bordered bg-light">
+      <tbody>
+        <tr>
+          <th>氏名</th>
+          <%= @customer.last_name %> <%= @customer.first_name %>
+        </tr>
+
+         <tr>
+          <th>カナ</th>
+          <%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
+        </tr>
+
+         <tr>
+          <th>郵便番号</th>
+          <%= @customer.postal_code %>
+        </tr>
+
+         <tr>
+          <th>住所</th>
+          <%= @customer.address %>
+        </tr>
+
+         <tr>
+          <th>電話番号</th>
+          <%= @customer.telephone_number %>
+        </tr>
+
+         <tr>
+          <th>メールアドレス</th>
+          <%= @customer.email %>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <h4>配送先</h4> <%= link_to "一覧を見る", class: "btn btn-primary" %>
+    <h4>注文履歴</h4> <%= link_to "一覧を見る", class: "btn btn-primary" %>
+
+  </div>
+</div>
