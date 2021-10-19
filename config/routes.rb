@@ -19,9 +19,13 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
-  
+
   namespace :public do
-  
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :destroy]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :orders, only: [:new, :comfirm, :thanks, :create, :index, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   root to: 'homes#top'
