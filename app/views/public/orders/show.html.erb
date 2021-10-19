@@ -1,0 +1,72 @@
+<main>
+  <span class="page-title">注文履歴詳細</span>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <table class="detail-table">
+          <strong>注文情報</strong>
+          <thead>
+            <tr>
+              <td>注文日</td>
+              <td></td>
+            </tr>
+             <tr>
+              <td>配送先</td>
+              <td></td>
+            </tr>
+             <tr>
+              <td>支払方法</td>
+              <td></td>
+            </tr>
+             <tr>
+              <td>ステータス</td>
+              <td></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="col-4">
+        <table class="price-table">
+          <strong>請求情報</strong>
+          <tr>
+            <td>商品合計</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>配送料</td>
+            <td>800</td>
+          </tr>
+          <tr>
+            <td><strong>ご請求額</strong></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+      <table class="item-table">
+        <thead>
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</main>
