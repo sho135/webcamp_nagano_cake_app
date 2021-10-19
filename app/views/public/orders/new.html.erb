@@ -1,0 +1,27 @@
+<h1>注文情報入力</h1>
+
+<table class="table">
+
+<tbody>
+  <tr>
+    <th>支払方法</th>
+    <td>
+      <%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.label :payment_method, "クレジットカード" %>
+    </td>
+    <td>
+      <%= f.radio_button :payment_method, "transfer" %>
+      <%= f.label :payment_method, "銀行振込" %>
+    </td>
+  </tr>
+</tbody>
+
+<tbody>
+  <tr>
+    <th>お届け先</th>
+    <td></td>
+  </tr>
+</tbody>
+
+<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+</table>
