@@ -1,29 +1,35 @@
 <div class="container">
   <!--customer側:商品詳細-->
   <div class="row">
-    <div class="col-md-3">
-      <%= attachment_image_tag @items, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+    <div class="col-3">
+
     </div>
 
-    <div class="col-md-9">
-      <table class="table">
+    <div class="col-8">
+      <div class="item-image">
+        <%= attachment_image_tag @items, :image, size: "300x220" %>
+      </div>
 
+      <table class="table">
         <thead>
-          <th><%= @item.item_name %></th>
+          <th><h2><%= @item.item_name %></h2></th>
         </thead>
 
         <tbody>
           <tr><td><%= @item.introduction %></td></tr>
-          <tr><td><%= @item.price %></td></tr>
-
-          <%= form_with @cart_item, url: public_cart_items_path, local: true do|f| %>
-            <%= f.select amount, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], prompt: "個数選択" %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.submit " カートに入れる ", class: "btn btn-success" %>
-          <% end %>
-
+          <tr><td>¥<%= @item.price %></td></tr>
+          <tr>
+            <td>
+              <%= form_with url: public_cart_items_path, local: true do |f| %>
+              <%= f.select :amount, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]], prompt: "個数選択" %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.submit " カートに入れる ", class: "btn btn-success" %>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
+
     </div>
   </div>
 </div>

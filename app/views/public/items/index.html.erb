@@ -1,13 +1,36 @@
-<h1>商品一覧</h1>
+<div class="container">
+  <span class="page-title">商品一覧</span>
+    <div class="row">
 
-<table class="table">
-  <tbody>
-     <% @items.each do |item| %>
-     <tr>
-       <!--商品画像入れるコード-->
-        <th><%= item.item_name %></th>
-        <th>¥<%= item.price %></th>
-      </tr>
-     <% end %>
-  </tbody>
-</table>
+    <div class="col-3">
+      <table class="genre-table">
+
+      </table>
+    </div>
+
+
+
+    <div class="col-8">
+      <table class="item-table">
+        <tbody>
+           <% @items.each do |item| %>
+           <tr>
+             <td>
+               <%= link_to public_item_path(item.id) do %>
+               <%= attachment_image_tag item, :image, size: "200x150" %><% end %>
+             </td>
+           </tr>
+           <tr>
+             <td><%= item.item_name %></td>
+           </tr>
+           <tr>
+             <td>¥<%= item.price %></td>
+           </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+

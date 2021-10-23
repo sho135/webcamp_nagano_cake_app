@@ -5,9 +5,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
   end
 
   def destroy
+     @cart_item = CartItem.find(params[:id])
   end
 
   def destroy_all
