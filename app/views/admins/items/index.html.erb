@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>商品一覧</h1>
+  <span class="page-title">商品一覧</span>
 
   <%= link_to "+", new_admins_item_path, class: "btn btn-light btn-circle pull-right" %>
 
@@ -18,7 +18,7 @@
       <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= item.item_name %></td>
+        <td><%= link_to "#{item.item_name}", admins_item_path(item.id) %></td>
         <td><%= item.price %></td>
         <td><%= item.genre.genre_name %></td>
         <td><%= item.is_active %></td>
