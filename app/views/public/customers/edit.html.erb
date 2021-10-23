@@ -1,6 +1,6 @@
 <div class="container">
   <h1>会員情報編集</h1>
-  <%= form_with model: @customer, url:public_customer_path , local:true do |f| %>
+  <%= form_with model: @customer, url: public_customer_path , local:true do |f| %>
 
   <h3>会員ID</h3>
   <h3>氏名 <%= f.text_field :last_name %> <%= f.text_field :first_name %></h3>
@@ -11,6 +11,6 @@
   <h3>メールアドレス <%= f.text_field :email %></h3>
 
   <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-  <%= f.submit "退会する", class: "btn btn-denger" %>
+  <%= f.submit "退会する", class: "btn btn-danger" %>
   <% end %>
 </div>
