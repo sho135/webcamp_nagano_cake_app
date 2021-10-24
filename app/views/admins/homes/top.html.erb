@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>注文履歴一覧</h1>
+  <span class="page-title">注文履歴一覧</span>
 
-  <table class="table">
+  <table class="table order-table">
     <thead>
       <tr>
         <th>購入日時</th>
@@ -12,14 +12,14 @@
     </thead>
 
     <tbody>
-      <% @orders.each do |order| %>
+       <!--@orders.each do |order| %>-->
       <tr>
-        <td> order.created_at %></td>
-        <td><%= order.name %></td>
+        <!--<td> order.created_at %></td>-->
+        <!--<td> order.name %></td>-->
         <td></td>
-        <td><%= order.status %></td>
+        <!--<td> order.status %></td>-->
       </tr>
-      <% end %>
+       <!--end %>-->
     </tbody>
   </table>
 

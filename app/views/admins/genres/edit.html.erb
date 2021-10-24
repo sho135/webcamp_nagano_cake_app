@@ -1,13 +1,13 @@
 <div class="container">
-  <h1>ジャンル編集</h1>
+  <span class="page-title">ジャンル編集</span>
   <div class="row">
     <div class="col-md-4">
       <%= form_with model: @genre, url: admins_genre_path, local:true do |f| %>
-      <h3>
+      <span class="edit-genre">
         <%= f.label :ジャンル名 %>
         <%= f.text_field :genre_name %>
         <%= f.submit '変更を保存', class: "btn btn-success" %>
-      </h3>
+      </span>
       <% end %>
     </div>
   </div>
