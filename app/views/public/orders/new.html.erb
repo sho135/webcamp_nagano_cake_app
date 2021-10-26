@@ -1,7 +1,7 @@
 <span class="page-title">注文情報入力</span>
 
 <table class="table">
-<%= form_with model: @order, 
+<%= form_with model: @order, url: confirm_public_orders_path, local: true, do |f| %>
 <tbody>
   <tr>
     <th>支払方法</th>
@@ -19,7 +19,12 @@
 <tbody>
   <tr>
     <th>お届け先</th>
-    <td></td>
+    <td>
+      <%= f.radio_button :my_address, "1", checked: true %>
+      <%= f.label :my_address, "ご自身の住所" %>
+      <%= current_customer.postal_code %> <%= current_customer.address %>
+      <%= current_customer.last_name %> <%= current_customer.first_name %>
+    </td>
   </tr>
 </tbody>
 

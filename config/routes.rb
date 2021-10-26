@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
+
   namespace :admins do
     get '' => "homes#top"
     resources :orders_details, only: [:update]
@@ -20,17 +21,27 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
 
+
   namespace :public do
-    root to: 'homes#top'
-    get "/home/about" => "homes#about"
+
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :destroy]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+    end
+  end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
-
+  root to: 'homes#top'
+  get "/home/about" => "homes#about"
 
 
 
