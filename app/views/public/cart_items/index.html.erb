@@ -11,19 +11,21 @@
   </thead>
 
   <tbody>
-　　<% @cart_items.each do |cart_item| %>
-　　<tr>
-　　  <td></td>
-　　  <td></td>
-　　  <td>
-　　    <%= f.submit "変更", class: "btn btn-success" %>
-　　  </td>
-　　  <td></td>
-　　  <td>
-　　    <%= f.submit "削除する", class: "btn btn-danger" %>
-　　  </td>
-　　</tr>
-　　<% end %>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= attachment_image_tag cart_item.item, image, size: "50x40", fallback: "no-image.jpg" %></td>
+      <td><%= cart_item.item.name %></td>
+      <td><%= (cart_item.item.price * 1.1).floor %></td>
+      <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+      <td>
+        <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+      </td>
+
+      <td>
+        <%= f.submit "削除する", class: "btn btn-danger btn-sm" %>
+      </td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 
@@ -33,7 +35,7 @@
   <tbody>
     <tr>
       <td>合計金額</td>
-
+      <td><% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
     </tr>
   </tbody>
 </table>
