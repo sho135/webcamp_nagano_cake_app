@@ -21,15 +21,16 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    root to: 'homes#top'
+    get "/home/about" => "homes#about"
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :destroy]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :orders, only: [:new, :comfirm, :thanks, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
-  root to: 'homes#top'
-  get "/home/about" => "homes#about"
+
 
 
 
