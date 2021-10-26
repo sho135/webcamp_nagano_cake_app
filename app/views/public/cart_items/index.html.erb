@@ -1,7 +1,6 @@
 <span class="page-title">ショッピングカート</span>
 
 <table class="table">
-
   <thead>
     <th>商品名</th>
     <th>単価（税込）</th>
@@ -13,30 +12,32 @@
   <tbody>
     <% @cart_items.each do |cart_item| %>
     <tr>
-      <td><%= attachment_image_tag cart_item.item, image, size: "50x40", fallback: "no-image.jpg" %></td>
-      <td><%= cart_item.item.name %></td>
-      <td><%= (cart_item.item.price * 1.1).floor %></td>
-      <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
       <td>
-        <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+        <%= attachment_image_tag cart_item.item, image, size: "50x40", fallback: "no-image.jpg" %>
+        <%= cart_item.item.name %>
       </td>
-
+      <td><%= cart_item.item.with_tax_price%></td>
+      <td>
+        <%= form_with model:@cart_item, url: public_cart_items_path(cart_item.id), local: true do |f| %>
+        <%= f.select :amount, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]] %>
+        <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+        <% end %>
+      </td>
+      <td><%= cart_item.subtotal%></td>
       <td>
         <%= f.submit "削除する", class: "btn btn-danger btn-sm" %>
       </td>
     </tr>
-    <% end %>
   </tbody>
 </table>
-
-<%= link_to "買い物を続ける", root_path, class: "btn btn-primary btn-sm" %>
-
+        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary btn-sm" %>
 <table>
   <tbody>
     <tr>
       <td>合計金額</td>
-      <td><% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+      <td><% @合計金額 +=  cart_item.subtotal %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
 
