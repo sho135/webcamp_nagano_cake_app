@@ -5,7 +5,9 @@ class Public::OrdersController < ApplicationController
     @addresses = current_customer.addresses
   end
 
-  def comfirm
+  def confirm
+    @cart_items = current_customer.cart_items
+    
   end
 
   def thanks
@@ -19,8 +21,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    
   end
+
 
 
 private
