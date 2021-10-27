@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>商品詳細</h1>
+  <span class="page-title">商品詳細</span>
   <div class="row">
     <div class="col-md-3">
-      <%= attachment_image_tag @items, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @item, :image, size: "300x200" %>
     </div>
 
     <div class="col-md-9">
@@ -20,7 +20,7 @@
 
         <tr>
           <th>ジャンル</th>
-          <td><%= @item.genre_id %></td>
+          <td><%= @item.genre.genre_name %></td>
         </tr>
 
         <tr>
@@ -30,7 +30,13 @@
 
         <tr>
           <th>販売ステータス</th>
-          <td><%= @item.is_active %></td>
+          <td>
+            <% if @item.is_active == true %>
+             販売中
+            <% else %>
+            販売停止中
+            <% end %>
+          </td>
         </tr>
 
       </table>
