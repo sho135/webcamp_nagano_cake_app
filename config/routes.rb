@@ -20,14 +20,19 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
-  
-  
-  
-  
+
+
+
+
   namespace :public do
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :destroy]
 
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
         delete 'destroy_all'
