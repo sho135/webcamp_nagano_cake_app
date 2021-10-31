@@ -6,7 +6,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
+    @sum = 0
 
   end
 

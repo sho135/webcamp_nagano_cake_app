@@ -1,7 +1,9 @@
-<main>
+<div class="container">
   <span class="page-title">注文情報確認<span>
-    <%= form_with model: @order, local: true do |f| %>
-    <table class="comfirm-table">
+  <div class="row">
+
+    <div class="col-9">
+      <table class="comfirm-table">
       <thead>
         <tr>
           <th>商品名</th>
@@ -16,31 +18,38 @@
         <tr>
           <td><%= cart_item.item.item_name %></td>
           <td><%= cart_item.item.with_tax_price %></td>
-          <td><%= cart_item.item.amount %></td>
+          <td><%= cart_item.amount %></td>
           <td><%= cart_item.subtotal %></td>
         </tr>
           <% @sum += cart_item.item.with_tax_price*cart_item.amount %>
           <% end %>
       </tbody>
     </table>
+  </div>
 
+  <div class="col-3">
     <table class="price-table" >
       <tbody>
         <tr>
-          <td>送料</td>
+          <th>送料</th>
           <td>800</td>
         </tr>
         <tr>
-          <td>商品合計</td>
+          <th>商品合計</th>
           <td><%= @sum %></td>
         </tr>
         <tr>
-          <td>請求金額</td>
-          <td></td>
+          <th>請求金額</th>
+          <td><%= @sum + 800 %></td>
         </tr>
       </tbody>
     </table>
-    <%- f.submit "注文を確定する", class: "btn btn-success" %>
+  </div>
+
+
+    <%= form_with model: @order_path, local: true do |f| %>
+    <%= f.submit "注文を確定する", class: "btn btn-success" %>
     <% end %>
-</main>
+  </div>
+</div>
 
