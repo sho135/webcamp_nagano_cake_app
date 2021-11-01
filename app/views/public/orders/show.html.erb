@@ -1,7 +1,5 @@
-<main>
+<div class="container">
   <span class="page-title">注文履歴詳細</span>
-
-  <div class="container">
     <div class="row">
       <div class="col-6">
         <table class="detail-table">
@@ -9,11 +7,13 @@
           <thead>
             <tr>
               <td>注文日</td>
-              <td></td>
+              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
              <tr>
               <td>配送先</td>
-              <td></td>
+              <td><%= @order.postal_code %></td>
+              <td><%= @order.address %></td>
+              <td><%= @order.name %></td>
             </tr>
              <tr>
               <td>支払方法</td>
@@ -55,11 +55,8 @@
           </tr>
         </thead>
         <tbody>
-          
+
         </tbody>
       </table>
     </div>
   </div>
-
-
-</main>
