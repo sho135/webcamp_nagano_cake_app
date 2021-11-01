@@ -38,5 +38,8 @@ def order_params
   params.permit(:customer_id, :postal_code, :address, :name, :shipping_fee, :total_payment, :payment_method, :order_status)
 end
 
+def address_params
+  params.permit(:name, :postal_code, :address)
+end
 
 end
