@@ -45,11 +45,36 @@
       </tbody>
     </table>
   </div>
-
-
-    <%= form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
-    <%= f.submit "注文を確定する", class: "btn btn-success" %>
-    <% end %>
   </div>
+
+  <div class="row">
+    <div class="col-8">
+      <table class="address-table">
+        <thead>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <th>お届け先</th>
+            <td><%= @order.postal_code %> <%= @order.address%> <%= @order.name %></td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="mx-auto">
+        <%= form_with model: @order, url: public_orders_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :postal_code %>
+          <%= f.hidden_field :address %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :total_payment %>
+        <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </div>
 </div>
 
