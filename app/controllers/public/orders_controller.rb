@@ -10,11 +10,12 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
     @sum = 0
+    @order.shipping_fee = 800
 
   if params[:order][:select_option] == "0"
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.name = full_name(current_customer)
+    @order.name = current_customer.full_name
   elsif params[:order][:select_option] == "1"
     @order.postal_code = Addrss.find(order_params[:customer]).postal_code
     @order.address = Addrss.find(order_params[:customer]).address
