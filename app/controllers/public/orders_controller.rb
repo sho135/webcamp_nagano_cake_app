@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
     @order.customer = current_customer
     @order.customer_id = current_customer.id
     @order.save
-    
+
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
@@ -41,11 +41,11 @@ class Public::OrdersController < ApplicationController
       @order_detail.price = cart_item.item.price * cart_item.amount
       @order_detail.save
     end
-    
+
     @cart_items.destroy_all
-    
+
     redirect_to thanks_public_orders_path
-    
+
   end
 
   def thanks
@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @order = current_customer.orders
+    @orders = current_customer.orders
   end
 
   def show
@@ -66,11 +66,11 @@ class Public::OrdersController < ApplicationController
 private
 
 def order_params
-  params.permit(:customer_id, :postal_code, :address, :name, :shipping_fee, :total_payment, :payment_method, :order_status)
+  params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_fee, :total_payment, :payment_method, :order_status)
 end
 
 def address_params
-  params.permit(:name, :postal_code, :address)
+  params.require(:address).permit(:name, :postal_code, :address)
 end
 
 end
