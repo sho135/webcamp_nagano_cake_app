@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
     @order.customer = current_customer
     @order.customer_id = current_customer.id
     @order.save
-
+    
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
@@ -41,11 +41,11 @@ class Public::OrdersController < ApplicationController
       @order_detail.price = cart_item.item.price * cart_item.amount
       @order_detail.save
     end
-
+    
     @cart_items.destroy_all
-
+    
     redirect_to thanks_public_orders_path
-
+    
   end
 
   def thanks
