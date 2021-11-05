@@ -1,36 +1,20 @@
 <div class="container">
-  <span class="page-title">商品一覧</span>
-    <div class="row">
-
-    <div class="col-3">
-      <table class="genre-table">
-
-      </table>
+  <div class="row">
+    <div class="col-sm-12 px-sm-0">
+      <h4>商品一覧</h4>
     </div>
+  </div>
 
-
-
-    <div class="col-8">
-      <table class="item-table">
-        <tbody>
-           <% @items.each do |item| %>
-           <tr>
-             <td>
-               <%= link_to public_item_path(item.id) do %>
-               <%= attachment_image_tag item, :image, size: "200x150" %>
-               <% end %>
-             </td>
-           </tr>
-           <tr>
-             <td><%= item.item_name %></td>
-           </tr>
-           <tr>
-             <td>¥<%= item.price %></td>
-           </tr>
-        </tbody>
-        <% end %>
-      </table>
+  <div class="row mt-3 mb-3 text-xs-center">
+    <% @items.each do |item| %>
+    <div class="mx-auto">
+      <%= link_to public_item_path(item.id) do %>
+      <%= attachment_image_tag item, :image, size: "150x100" %>
+      <% end %>
+      <p><%= item.item_name %></p>
+      <p>¥<%= item.price %></p>
     </div>
+    <% end %>
   </div>
 </div>
 
