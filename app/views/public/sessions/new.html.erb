@@ -1,10 +1,20 @@
-<span class="page-title">ログイン</span><br>
 
-<span>会員の方はこちらからログイン<span>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 
 <div class="container">
+
+  <div class="row mb-5">
+      <div class="col-3"><span>ログイン</span></div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+         <span>会員の方はこちらからログイン</span>
+         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-3">
       <%= f.label :メールアドレス %>
@@ -28,7 +38,10 @@
     </div>
     <% end %>
   </div>
-</div>
 
-<span>会員登録がお済みでない方</span>
-<%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください
+  <div class="col-3">
+      <span>会員登録がお済みでない方</span>
+      <%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください
+    </div>
+
+</div>
