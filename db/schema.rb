@@ -62,14 +62,14 @@ ActiveRecord::Schema.define(version: 2021_11_03_042229) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "genre_name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
-    t.string "item_name"
+    t.string "name"
     t.string "image_id"
     t.text "introduction"
     t.integer "price"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_042229) do
     t.integer "item_id"
     t.integer "order_id"
     t.integer "amount"
-    t.integer "making_status"
+    t.integer "making_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_11_03_042229) do
     t.integer "shipping_fee"
     t.integer "total_payment"
     t.integer "payment_method"
-    t.integer "order_status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
