@@ -1,8 +1,8 @@
 <div class="container">
   <span class="page-title">注文履歴詳細</span>
     <div class="row">
-      <div class="col-6">
 
+      <div class="col-6">
         <table class="detail-table">
           <strong>注文情報</strong>
           <thead>
@@ -12,9 +12,11 @@
             </tr>
              <tr>
               <td>配送先</td>
-              <td><%= @order.postal_code %></td>
-              <td><%= @order.address %></td>
-              <td><%= @order.name %></td>
+              <td>
+                〒<%= @order.postal_code %><br>
+                <%= @order.address %><br>
+                <%= @order.name %>
+              </td>
             </tr>
              <tr>
               <td>支払方法</td>
@@ -28,7 +30,27 @@
         </table>
       </div>
 
-      <table class="item-table">
+      <div class="col-4">
+        <table class="price-table">
+          <strong>請求情報</strong>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @sum %></td>
+          </tr>
+          <tr>
+            <td>配送料</td>
+            <td><%= @order.shipping_fee %></td>
+          </tr>
+          <tr>
+            <td><strong>ご請求額</strong></td>
+            <td><%= @sum + @order.shipping_fee %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-8">
+        <table class="item-table">
+        <strong>注文内容</strong>
         <thead>
           <tr>
             <th>商品</th>
@@ -48,23 +70,6 @@
           <% end %>
         </tbody>
       </table>
-
-      <div class="col-4">
-        <table class="price-table">
-          <strong>請求情報</strong>
-          <tr>
-            <td>商品合計</td>
-            <td><%= @sum %></td>
-          </tr>
-          <tr>
-            <td>配送料</td>
-            <td><%= @order.shipping_fee %></td>
-          </tr>
-          <tr>
-            <td><strong>ご請求額</strong></td>
-            <td><%= @sum + @order.shipping_fee %></td>
-          </tr>
-        </table>
       </div>
 
     </div>
