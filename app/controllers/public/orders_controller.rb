@@ -9,21 +9,31 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
-    @sum = 0
     @order.shipping_fee = 800
+    @sum = 0
 
   if params[:order][:select_option] == "0"
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
     @order.name = current_customer.full_name
   elsif params[:order][:select_option] == "1"
-    @order.postal_code = Address.find(order_params[:customer]).postal_code
-    @order.address = Address.find(order_params[:customer]).address
-    @order.name = Address.find(order_params[:customer]).name
+    address = Address.find(params[:address][:id])
+    @order.postal_code = address.postal_code
+    @order.address = address.address
+    @order.name = address.name
   elsif params[:order][:select_option] == "2"
-    @order.customer_address = order_params[:customer_address]
-    @order.customer_postal_code = order_params[:customer_postal_code]
-    @order.customer_name = order_params[:customer_name]
+    @address = Address.new
+    @address.address = params[:order][:address]
+    @address.postal_code = params[:order][:postal_code]
+    @address.name = params[:order][:name]
+    @address.customer_id = current_customer.id
+    if @address.save
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    else
+      render :new
+    end
   end
   end
 
@@ -62,6 +72,9 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @sum = 0
+    @order_details.each do |order_detail|
+      @sum += order_detail.item.with_tax_price*order_detail.amount
+    end
   end
 
 
@@ -69,7 +82,7 @@ class Public::OrdersController < ApplicationController
 private
 
 def order_params
-  params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_fee, :total_payment, :payment_method, :status)
+  params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_fee, :total_payment, :payment_method)
 end
 
 def address_params
