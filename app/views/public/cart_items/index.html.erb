@@ -20,7 +20,7 @@
       </td>
       <td><%= cart_item.item.with_tax_price %></td>
       <td>
-        <%= form_with model:cart_item, url: public_cart_items_path(cart_item.id), local: true do |f| %>
+        <%= form_with model:cart_item, url: public_cart_items_path(cart_item.id), method: :post, local: true do |f| %>
         <%= f.select :amount, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]] %>
         <%= f.submit "変更", class: "btn btn-success btn-sm" %>
         <% end %>
