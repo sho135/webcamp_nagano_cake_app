@@ -6,9 +6,16 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-  if @cart_item.save
-    redirect_to public_cart_items_path
-  end
+    @sarch_cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
+    if @sarch_cart_item.present?
+      @sarch_cart_item.amount += @cart_item.amount
+      @sarch_cart_item.save
+      redirect_to public_cart_items_path
+    else
+      if @cart_item.save
+        redirect_to public_cart_items_path
+      end
+    end
   end
 
   def index
