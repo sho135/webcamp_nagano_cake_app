@@ -22,6 +22,4 @@ class Customer < ApplicationRecord
     return last_name + first_name
   end
 
-  enum is_activ: {有効: true, 退会: false}
-
 end

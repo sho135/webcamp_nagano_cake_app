@@ -24,10 +24,10 @@
 
   <div class="col-4">販売ステータス</div>
   <div class="col-8">
-  <%= f.radio_button :is_active, :on_sale, checked: true %>
-  <%= f.label :is_active, "販売中", {value: "0", style: "display: inline-block;"} %>
-  <%= f.radio_button :is_active, :off_sale %>
-  <%= f.label :is_active, "販売停止中", {value: "1", style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active, "販売中", value: true %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active, "販売停止中", value: false %>
   </div>
 
 
