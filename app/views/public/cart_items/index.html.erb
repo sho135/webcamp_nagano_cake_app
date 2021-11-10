@@ -1,5 +1,5 @@
 <span class="page-title">ショッピングカート</span>
-<%= link_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete, class: "btn btn-danger btn-sm" %>
+<%= link_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete, data: {confirm: 'カートを空にしてよろしいですか？'}, class: "btn btn-danger btn-sm" %>
 
 <table class="table">
   <thead>
@@ -20,7 +20,7 @@
       </td>
       <td><%= cart_item.item.with_tax_price %></td>
       <td>
-        <%= form_with model:cart_item, url: public_cart_items_path(cart_item.id), method: :post, local: true do |f| %>
+        <%= form_with model:cart_item, url: public_cart_item_path(cart_item.id), method: :patch, local: true do |f| %>
         <%= f.select :amount, [[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[7,7],[8,8],[9,9],[10,10]] %>
         <%= f.submit "変更", class: "btn btn-success btn-sm" %>
         <% end %>
